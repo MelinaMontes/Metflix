@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Temporada {
     public int numero;
-    public String nombre; //Esto es el nombre de la temporada y no del capitulo
+    public String nombre; 
     public List<Episodio> episodios  = new ArrayList<>();
 
     public Episodio buscarEpisodio(int numeroEpisodio){

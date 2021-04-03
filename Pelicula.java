@@ -1,5 +1,5 @@
 public class Pelicula extends Contenido {
-    public int duracion; //en minutos
+    public int duracion; 
     public Director director;
     public boolean filmadaEnIMAX;
 }

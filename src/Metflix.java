@@ -1,277 +1,227 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.plaf.LabelUI;
+import personas.*;
 
 public class Metflix {
 
     public List<Pelicula> peliculas = new ArrayList<>();
     public List<Serie> series = new ArrayList<>();
-    
-    //Metodo que inicializa el catalogo cno las pelis/series qeu querramos
-    public void inicializarCatalogo(){
 
-        //Pelis: Titanic, Batman: El caballero de la noche 
-        Pelicula titanic; //declara una variable que apuntara a una Pelicula
-        titanic = new Pelicula(); //Estas ultimoas 2 lineas: Pelicula titanic = new Pelicula();
+    public void inicializarCatalogo() {
 
-        titanic.nombre = "Titanic";
-        titanic.añoLanzamiento = 1997;
-        titanic.duracion = 210; //3hs 30
+        // CATALOGO DE PELICULAS
+
+        Pelicula titanic;
+        titanic = new Pelicula();
+
+        titanic.setNombre("Titanic");
+        titanic.setAñoLanzamiento(1997);
+        titanic.setDuracion(210);
 
         Actor actor = new Actor();
-        actor.nombre = "Leo DiCaprio";
+        actor.setNombre("Leo DiCaprio");
 
-        //Agrego a la lista de actores del objeto titanic
-        titanic.actores.add(actor); //metodo Add -> agregar a una lista
-
-        //Recien ahora estoy agregando a Titanic al catalogo
+        // Agrego a la lista de actores del objeto titanic
+        titanic.getActores().add(actor); // metodo Add -> agregar a una lista
+        // Recien ahora estoy agregando a Titanic al catalogo
         this.peliculas.add(titanic);
 
-        //Otra Peli
         Pelicula batman = new Pelicula();
-        batman.nombre = "Batman: el caballero de la nohe";
-        batman.añoLanzamiento = 2008;
-        batman.duracion = 152;
-
-        //No voy a declarar otra variable actor, voy a reusar
-        //siempre primero antes de reusar
+        batman.setNombre("Batman: el caballero de la noche");
+        batman.setAñoLanzamiento(2008);
+        batman.setDuracion(152);
         // re instanciar
-        actor = new Actor(); //Creo un nuevo actor, pero referenciado con la variable actor
-        actor.nombre = "Christian Bale";
+        actor = new Actor(); // Creo un nuevo actor, pero referenciado con la variable actor
+        actor.setNombre("Christian Bale");
 
-        batman.actores.add(actor);
+        batman.getActores().add(actor);
 
         this.peliculas.add(batman);
 
-        //**** TAREA **** CARGAR PELICULAS
+        Pelicula LasHoras = new Pelicula();
+        LasHoras.setNombre("Las Horas");
 
-        Pelicula LasHoras= new Pelicula();
-        LasHoras.nombre= "Las Horas";
+        LasHoras.setAñoLanzamiento(2002);
+        LasHoras.setDuracion(142);
 
-        LasHoras.añoLanzamiento= 2002;
-        LasHoras.duracion= 142;
-
-        actor= new Actor();
-        actor.nombre="Nicole Kidman" ;
-        LasHoras.actores.add(actor);
+        actor = new Actor();
+        actor.setNombre("Nicole Kidman");
+        LasHoras.getActores().add(actor);
 
         this.peliculas.add(LasHoras);
 
-        Pelicula VolverAlFuturo= new Pelicula();
-        VolverAlFuturo.nombre= "Volver al Futuro";
-        VolverAlFuturo.añoLanzamiento=1989;
-        VolverAlFuturo.duracion=186;
-        actor=new Actor();
-        actor.nombre="Michael J Fox";
-        VolverAlFuturo.actores.add(actor);
+        Pelicula elResplandor = new Pelicula();
+        elResplandor.setNombre("El Resplandor");
+        elResplandor.setDirector(new Director());
+        elResplandor.getDirector().setNombre("Stanley Kubrick");
+        this.peliculas.add(elResplandor);
+
+        Pelicula VolverAlFuturo = new Pelicula();
+        VolverAlFuturo.setNombre("Volver al Futuro");
+        VolverAlFuturo.setAñoLanzamiento(1989);
+        VolverAlFuturo.setDuracion(186);
+
+        actor = new Actor();
+        actor.setNombre("Michael J Fox");
+        VolverAlFuturo.getActores().add(actor);
+
         this.peliculas.add(VolverAlFuturo);
 
-        
-                     //DARK//
+        // SERIES
 
-        Serie dark= new Serie();
-        dark.nombre = "Dark";
-        dark.añoLanzamiento=2019;
+        Serie dark = new Serie();
+        dark.setNombre("Dark");
+        dark.setAñoLanzamiento(2019);
 
-        actor=new Actor();
-        actor.nombre="Louis Hofmann";
-        dark.actores.add (actor);
+        actor = new Actor();
+        actor.setNombre("Louis Hofmann");
+        dark.getActores().add(actor);
 
-        actor=new Actor();
-        actor.nombre="Oliver Masucci";
-        dark.actores.add(actor);
+        actor = new Actor();
+        actor.setNombre("Oliver Masucci");
+        dark.getActores().add(actor);
 
-        Temporada temporada= new Temporada();
-        temporada.numero = 1;
+        Temporada temporada = new Temporada();
+        temporada.setNumero(1);
 
-        Episodio episodio= new Episodio();
-        episodio.nombre= "Secretos";
-        episodio.numero= 1;
-        temporada.episodios.add(episodio);
+        Episodio episodio = new Episodio(1, "Secretos");
+        // episodio.nombre = "Secretos";
+        // episodio.numero = 1;
+        episodio.setDuracion(43);
 
-        episodio= new Episodio();
-        episodio.nombre="Mentiras";
-        episodio.numero=2;
-        temporada.episodios.add(episodio);
+        temporada.getEpisodios().add(episodio);
 
-        episodio= new Episodio();
-        episodio.nombre= "Pasado y Presente";
-        episodio.numero=3;
-        temporada.episodios.add(episodio);
+        episodio = new Episodio(2, "Mentiras");
+        // episodio.nombre = "Mentiras";
+        // episodio.numero = 2;
 
-        episodio= new Episodio();
-        episodio.nombre="Dobles Vidas";
-        episodio.numero=4;
-        temporada.episodios.add(episodio);
+        temporada.getEpisodios().add(episodio);
 
-        episodio= new Episodio();
-        episodio.nombre="verdades";
-        episodio.numero=5;
-        temporada.episodios.add(episodio);
+        episodio = new Episodio(3, "Pasado y Presente");
 
-        dark.temporadas.add(temporada);
-        
-        temporada= new Temporada();
-        temporada.numero=2;
+        temporada.getEpisodios().add(episodio);
 
-        episodio= new Episodio();
-        episodio.nombre="Principios y Finales";
-        episodio.numero=1;
-        temporada.episodios.add(episodio);
+        episodio = new Episodio(4, "Dobles Vidas");
 
-        episodio=new Episodio();
-        episodio.nombre="Materia Oscura";
-        episodio.numero=2;
-        temporada.episodios.add(episodio);
+        temporada.getEpisodios().add(episodio);
 
-        episodio = new Episodio();
-        episodio.numero=3;
-        episodio.nombre="Fantasmas";
-        temporada.episodios.add(episodio);
+        episodio = new Episodio(5, "Verdades");
 
-        episodio=new Episodio();
-        episodio.nombre="Los Viajeros";
-        episodio.numero=4;
-        temporada.episodios.add(episodio);
-        dark.temporadas.add(temporada);
+        temporada.getEpisodios().add(episodio);
+
+        dark.getTemporadas().add(temporada);
+
+        temporada = new Temporada();
+        temporada.setNumero(2);
+
+        episodio = new Episodio(1, "Principios y Finales");
+        temporada.getEpisodios().add(episodio);
+
+        episodio = new Episodio(2, "Materia Oscura");
+        temporada.getEpisodios().add(episodio);
+
+        episodio = new Episodio(3, "Fantasmas");
+        temporada.getEpisodios().add(episodio);
+
+        episodio = new Episodio(4, "Los Viajeros");
+        temporada.getEpisodios().add(episodio);
+
+        dark.getTemporadas().add(temporada);
 
         this.series.add(dark);
-        
 
-
-
-
-   //How I met your mother. Serie
         Serie howIMetYM = new Serie();
-        howIMetYM.nombre = "How I met your mother";
-        howIMetYM.añoLanzamiento = 2005;
-        
-        actor = new Actor();
-        actor.nombre = "Neil Patrick Harris";
-
-        howIMetYM.actores.add(actor);
+        howIMetYM.setNombre("How I met your mother");
+        howIMetYM.setAñoLanzamiento(2005);
 
         actor = new Actor();
-        actor.nombre = "Cobie Smulders";
+        actor.setNombre("Neil Patrick Harris");
 
-        howIMetYM.actores.add(actor);
-        
-        Director director = new Director();
-        director.nombre = "Pamela Fryman";
-        director.cantidadPremios = 3;
-        howIMetYM.directores.add(director);
-        
-        //T5:E11
-        //creo la temporada
-        temporada= new Temporada();
-        temporada.numero = 5;
-     
-        //Creo el episodio
-         episodio = new Episodio();
-        episodio.nombre = "The last cigarrette";
-        episodio.numero = 11;
+        howIMetYM.getActores().add(actor);
 
-        //vinculo temporada con episodio
-        temporada.episodios.add(episodio);
+        actor = new Actor();
+        actor.setNombre("Cobie Smulders");
 
-        episodio = new Episodio();
-        episodio.nombre = "Definitions";
-        episodio.numero = 1;
+        howIMetYM.getActores().add(actor);
 
-        temporada.episodios.add(episodio);
-
-        //Agrego la temporada
-        howIMetYM.temporadas.add(temporada);
-
-
-        //T3
-        //creo la temporada
         temporada = new Temporada();
-        temporada.numero = 3;
-     
-        //Creo el episodio
-        episodio = new Episodio();
-        episodio.nombre = "Wait for it";
-        episodio.numero = 1;
+        temporada.setNumero(5);
 
-        //vinculo temporada con episodio
-        temporada.episodios.add(episodio);
+        episodio = new Episodio(11, "The last cigarrette");
+        episodio.setDuracion(43);
 
-        episodio = new Episodio();
-        episodio.nombre = "Little Boys";
-        episodio.numero = 4;
+        temporada.getEpisodios().add(episodio);
 
-        temporada.episodios.add(episodio);
+        episodio = new Episodio(1, "Definitions", 41);
 
-        //Agrego la temporada
-        howIMetYM.temporadas.add(temporada);
+        temporada.getEpisodios().add(episodio);
 
-        //Aca esta toda la serie con 2 temporadas y cada una con 2 episodios.
+        Websodio ws = new Websodio(35, "Nombre wesodio en internet", "http://miepisodios.com/websodio.avi");
+        // ws.setNombre("Nombre wesodio en internet");
+        // ws.setNumero(35);
+        ws.setDuracion(42);
+        // ws.setLink("http://miepisodios.com/websodio.avi");
+
+        temporada.getEpisodios().add(ws);
+
+        howIMetYM.getTemporadas().add(temporada);
+
+        temporada = new Temporada();
+        temporada.setNumero(3);
+
+        episodio = new Episodio(1, "Wait for it", 40);
+        // episodio.setNombre("Wait for it");
+        // episodio.setNumero(1);
+        // episodio.setDuracion(40);
+
+        temporada.getEpisodios().add(episodio);
+
+        episodio = new Episodio(4, "Little Boys");
+        // episodio.setNombre("Little Boys");
+        // episodio.setNumero(4);
+        episodio.setDuracion(44);
+
+        temporada.getEpisodios().add(episodio);
+
+        howIMetYM.getTemporadas().add(temporada);
 
         this.series.add(howIMetYM);
-
         Serie bbt = new Serie();
-        bbt.nombre = "The BigBang Theory";
-        bbt.añoLanzamiento = 2007;
-        
+        bbt.setNombre("The BigBang Theory");
+        bbt.setAñoLanzamiento(2007);
+
         actor = new Actor();
-        actor.nombre = "Kaley Cuoco";
+        actor.setNombre("Kaley Cuoco");
 
-        bbt.actores.add(actor);
+        bbt.getActores().add(actor);
 
-        
-        //creo la temporada
         temporada = new Temporada();
-        temporada.numero = 1;
-     
-        //Creo el episodio
-        episodio = new Episodio();
-        episodio.nombre = "Pilot";
-        episodio.numero = 1;
+        temporada.setNumero(1);
 
-        //vinculo temporada con episodio
-        temporada.episodios.add(episodio);
+        episodio = new Episodio(1, "Pilot", 41);
 
-        episodio = new Episodio();
-        episodio.nombre = "The Cooper-Hofstadter Polarizatio";
+        temporada.getEpisodios().add(episodio);
 
-        temporada.episodios.add(episodio);
+        episodio = new Episodio(13, "The Cooper-Hofstadter Polarization");
 
-        //Agrego la temporada
-        bbt.temporadas.add(temporada);
+        temporada.getEpisodios().add(episodio);
+
+        bbt.getTemporadas().add(temporada);
 
         this.series.add(bbt);
 
     }
-    
-    //Buscar Serie
-    public Serie buscarSerie(String nombreABuscar){
 
-        // series = | serie1 | serie2 | serie25 | serie40 |
-        //vamos a usar el foreach: que sirve para recorrer listas
-        //este ciclo, tiene una variable, qeu apunta en cada vuelta
-        //a cada elemento de la lista
-        //o sea la primer vez, va a apuntar a serie1, despues a serie2 ddesp
-        //serie25 hasta que termina.
+    // Buscar Serie
+    public Serie buscarSerie(String nombreABuscar) {
+
         for (Serie serie : this.series) {
-            //pregunto si el nombre de la serie actual
-            //que estoy recorriendo es la que necesito
-            if (serie.nombre.equals(nombreABuscar))
-                return serie; //devuelvo esta serie.
+
+            if (serie.getNombre().equals(nombreABuscar))
+                return serie;
         }
-        //si llego hasta aca, es porque no encontro la serie.
         return null;
 
     }
-
-    public Pelicula buscarPelicula(String string) {
-        return null;
-    }
-
-
-   
-    //buscar un director
-    //
 }
-
